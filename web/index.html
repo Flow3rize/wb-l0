@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        input, button {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Получить данные заказа</h1>
+    
+    <form id="orderForm">
+        <input type="text" id="orderId" placeholder="Введите ID заказа (например: b563feb7b2b84b6test)" required>
+        <button type="submit">Получить данные</button>
+    </form>
+
+    <pre id="result"></pre>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const orderId = document.getElementById('orderId').value.trim();
+            const result = document.getElementById('result');
+            
+            try {
+                const response = await fetch(`http://localhost:8080/orders/${orderId}`);
+                
+                if (!response.ok) {
+                    throw new Error(`Ошибка ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                result.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                result.textContent = `❌ Ошибка: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
