@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/flowerize/wl-l0/models"
+	"github.com/flowerize/wb-l0/models"
 )
 
 type InMemoryCache struct {

@@ -6,10 +6,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/flowerize/wl-l0/cache"
-	"github.com/flowerize/wl-l0/config"
-	"github.com/flowerize/wl-l0/handlers"
-	"github.com/flowerize/wl-l0/storage"
+	"github.com/flowerize/wb-l0/cache"
+	"github.com/flowerize/wb-l0/config"
+	"github.com/flowerize/wb-l0/handlers"
+	"github.com/flowerize/wb-l0/storage"
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5"
 )

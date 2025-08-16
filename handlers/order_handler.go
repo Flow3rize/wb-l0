@@ -3,8 +3,8 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/flowerize/wl-l0/cache"
-	"github.com/flowerize/wl-l0/storage"
+	"github.com/flow3rize/wb-l0/cache"
+	"github.com/flow3rize/wb-l0/storage"
 	"github.com/gin-gonic/gin"
 )
 

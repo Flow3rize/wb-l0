@@ -1,4 +1,4 @@
-module github.com/flowerize/wl-l0
+module github.com/flowerize/wb-l0
 
 go 1.24.5
 

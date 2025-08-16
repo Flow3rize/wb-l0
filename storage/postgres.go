@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/flowerize/wl-l0/config"
-	"github.com/flowerize/wl-l0/models"
+	"github.com/flowerize/wb-l0/config"
+	"github.com/flowerize/wb-l0/models"
 	"github.com/go-pg/pg/v10"
 	"github.com/go-pg/pg/v10/orm"
 )
