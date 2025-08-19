@@ -10,7 +10,7 @@ RUN go mod download
 
 COPY . .
 
-RUN GOOS=linux go build -o main .
+RUN GOOS=linux go build -o main ./cmd
 
 CMD ["./main"]
 
