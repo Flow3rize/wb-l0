@@ -29,7 +29,6 @@ func (h *OrderHandler) GetOrder(c *gin.Context) {
 	var payment models.Payment
 	var items []models.Item
 
-	// Получаем заказ
 	err := h.db.DB.Model(&order).
 		Where("order_uid = ?", orderUID).
 		Select()
@@ -38,7 +37,6 @@ func (h *OrderHandler) GetOrder(c *gin.Context) {
 		return
 	}
 
-	// Получаем доставку
 	err = h.db.DB.Model(&delivery).
 		Where("order_uid = ?", orderUID).
 		Select()
@@ -47,7 +45,6 @@ func (h *OrderHandler) GetOrder(c *gin.Context) {
 		return
 	}
 
-	// Получаем оплату
 	err = h.db.DB.Model(&payment).
 		Where("order_uid = ?", orderUID).
 		Select()
@@ -56,7 +53,6 @@ func (h *OrderHandler) GetOrder(c *gin.Context) {
 		return
 	}
 
-	// Получаем товары
 	err = h.db.DB.Model(&items).
 		Where("order_uid = ?", orderUID).
 		Select()
