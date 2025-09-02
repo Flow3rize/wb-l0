@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
-	"github.com/flowerize/wb-l0/cache"
+	"github.com/flowerize/wb-l0/internal/cache"
 	"github.com/flowerize/wb-l0/internal/models"
 )
 

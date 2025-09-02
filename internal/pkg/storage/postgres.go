@@ -1,6 +1,8 @@
+// storage/storage.go
 package storage
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/flowerize/wb-l0/internal/config"
@@ -12,6 +14,8 @@ import (
 type PostgresStorage struct {
 	DB *pg.DB
 }
+
+var ErrOrderNotFound = errors.New("order not found")
 
 func NewPostgresStorage(cfg *config.Config) (*PostgresStorage, error) {
 	opt, _ := pg.ParseURL(fmt.Sprintf(
@@ -114,7 +118,6 @@ func (s *PostgresStorage) SaveOrder(order *models.Order) error {
 
 	return nil
 }
-
 func (s *PostgresStorage) GetOrder(orderUID string) (*models.Order, error) {
 	var order models.Order
 

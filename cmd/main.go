@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/flowerize/wb-l0/cache"
+	"github.com/flowerize/wb-l0/internal/cache"
 	"github.com/flowerize/wb-l0/internal/config"
 	"github.com/flowerize/wb-l0/internal/handlers"
 	"github.com/flowerize/wb-l0/internal/pkg/storage"
@@ -41,16 +41,8 @@ func main() {
 
 	gin.SetMode(gin.ReleaseMode)
 
-	r := gin.Default()
-
-	orderHandler := handlers.NewOrderHandler(orderCache, db)
-	r.GET("/orders/:order_uid", orderHandler.GetOrder)
-
-	// Подключение статики
-	r.StaticFile("/", "./static/index.html")
-
-	if err := r.Run(":8080"); err != nil {
-		log.Fatal(err)
+	if err := handlers.StartServer(":8080", orderCache, db); err != nil {
+		log.Fatalf("Ошибка запуска HTTP сервера: %v", err)
 	}
 
 }

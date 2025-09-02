@@ -1,8 +1,11 @@
 package config
 
 import (
+	"log"
 	"os"
 	"strconv"
+
+	"github.com/joho/godotenv"
 )
 
 type Config struct {
@@ -32,11 +35,18 @@ func LoadConfig() *Config {
 }
 
 // Вспомогательная функция для получения строки
-func getEnv(key, defaultValue string) string {
-	if value := os.Getenv(key); value != "" {
-		return value
+func init() {
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found")
 	}
-	return defaultValue
+}
+
+func getEnv(key, fallback string) string {
+	value := os.Getenv(key)
+	if value == "" {
+		return fallback
+	}
+	return value
 }
 
 // Вспомогательная функция для получения целого числа
